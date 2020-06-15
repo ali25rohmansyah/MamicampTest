@@ -37,10 +37,10 @@ class ListBookFragment : Fragment() {
 
 //        add recyclervier
         val viewAdapter2 = AllBookAdapter ()
-        binding.rcAction.adapter = viewAdapter
+        binding.rcNewBooks.adapter = viewAdapter2
 
         viewModel.items2.observe(viewLifecycleOwner, Observer { list->
-            viewAdapter.submitList(list)
+            viewAdapter2.submitList(list)
         })
 
         return binding.root
