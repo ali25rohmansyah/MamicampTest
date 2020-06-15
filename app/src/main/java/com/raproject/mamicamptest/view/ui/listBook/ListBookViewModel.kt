@@ -15,7 +15,8 @@ class ListBookViewModel : ViewModel() {
 
     private var _response = MutableLiveData<String>()
     private var _items = MutableLiveData<List<BookDataResult>>()
-    private var _items2 = MutableLiveData<List<BookDataResult>>()
+    private var _items2 = MutableLiveData<List<BookDataResult>> ()
+    private var _items3 = MutableLiveData<List<BookDataResult>>()
 
 
     val response: MutableLiveData<String>
@@ -24,25 +25,28 @@ class ListBookViewModel : ViewModel() {
         get() = _items
     val items2: LiveData<List<BookDataResult>>
         get() = _items2
+    val items3: LiveData<List<BookDataResult>>
+        get() = _items3
 
     private val vmJob = Job()
     private val crScope = CoroutineScope(vmJob + Dispatchers.Main)
 
     init{
+        _response.value = "1"
         crScope.launch {
             _response.value = "1"
             try {
                 val result = cabacaApi.retrofitServic.showActions()
                 val result2 = cabacaApi.retrofitServic.showUpdateBook()
+                val result3 = cabacaApi.retrofitServic.showRomance()
 
-                if (result.results.isNotEmpty()) {
+                if (result.results.isNotEmpty() || result2.results.isNotEmpty() || result3.results.isNotEmpty()) {
                     _items.value = result.results
-                    _response.postValue("2")
-                }
-
-                if (result2.results.isNotEmpty()) {
                     _items2.value = result2.results
+                    _items3.value = result3.results
                     _response.postValue("2")
+                }else{
+                    _response.postValue("1")
                 }
 
             }catch (t: Throwable){

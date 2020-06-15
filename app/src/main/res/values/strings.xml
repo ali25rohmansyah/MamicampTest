@@ -4,4 +4,10 @@
     <string name="title_list_book">List Book</string>
     <string name="title_genre">Genre</string>
     <string name="title_list_genre">All Genre</string>
+    <string name="welcome">"Welcome, "</string>
+    <string name="title_genre_action">Actions</string>
+    <string name="title_genre_romance">Romance</string>
+    <string name="title_genre_new_book">New Books</string>
+    <string name="banner_desc">its a banner</string>
+    <string name="cover_detail">cover detail</string>
 </resources>
