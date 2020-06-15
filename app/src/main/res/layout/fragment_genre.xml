@@ -10,16 +10,10 @@
             type="com.raproject.mamicamptest.view.ui.genre.GenreViewModel" />
     </data>
 
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background">
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/background"
             tools:context=".view.ui.genre.GenreFragment">
 
             <androidx.cardview.widget.CardView
@@ -34,12 +28,11 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="@string/title_list_genre"
                     android:textColor="@color/main"
-                    android:background="@android:color/white"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:gravity="center"
-                    tools:text="All Genre"/>
+                    android:gravity="center"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -47,17 +40,17 @@
                 android:id="@+id/rc_genre"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="52dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="4"
-                tools:listitem="@layout/item_genre"/>
+                tools:listitem="@layout/item_genre" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
 </layout>

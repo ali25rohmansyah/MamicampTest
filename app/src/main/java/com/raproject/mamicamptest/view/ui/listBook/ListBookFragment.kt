@@ -1,5 +1,6 @@
 package com.raproject.mamicamptest.view.ui.listBook
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.raproject.mamicamptest.BaseActivity
 import com.raproject.mamicamptest.databinding.FragmentListBookBinding
 import com.raproject.mamicamptest.view.adapter.AllBookAdapter
 import com.raproject.mamicamptest.view.adapter.GenreActionsAdapter
+import com.raproject.mamicamptest.view.ui.detailBook.DetailBook
 
 class ListBookFragment : Fragment() {
 
@@ -28,7 +31,7 @@ class ListBookFragment : Fragment() {
         binding.viewModel = viewModel
 
 //        add recyclervier
-        val viewAdapter = GenreActionsAdapter ()
+        val viewAdapter = GenreActionsAdapter {item -> showDetail(item)}
         binding.rcAction.adapter = viewAdapter
 
         viewModel.items.observe(viewLifecycleOwner, Observer { list->
@@ -36,7 +39,8 @@ class ListBookFragment : Fragment() {
         })
 
 //        add recyclervier
-        val viewAdapter2 = AllBookAdapter ()
+        val viewAdapter2 = AllBookAdapter {item -> showDetail(item)}
+
         binding.rcNewBooks.adapter = viewAdapter2
 
         viewModel.items2.observe(viewLifecycleOwner, Observer { list->
@@ -44,5 +48,11 @@ class ListBookFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    private fun showDetail(id: String) {
+        val intent = Intent(activity, DetailBook::class.java)
+        intent.putExtra("id", id)
+        startActivity(intent)
     }
 }

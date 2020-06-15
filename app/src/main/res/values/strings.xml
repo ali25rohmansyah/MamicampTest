@@ -3,4 +3,5 @@
     <string name="title_activity_base">MainActivity</string>
     <string name="title_list_book">List Book</string>
     <string name="title_genre">Genre</string>
+    <string name="title_list_genre">All Genre</string>
 </resources>

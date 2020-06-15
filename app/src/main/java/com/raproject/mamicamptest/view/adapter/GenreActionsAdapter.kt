@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raproject.mamicamptest.databinding.ItemBooksBinding
 import com.raproject.mamicamptest.network.BookDataResult
 
-class GenreActionsAdapter: ListAdapter<BookDataResult, GenreActionsAdapter.ActionsViewHolder>(DiffCallback){
+class GenreActionsAdapter (private val showDetail: (String) -> Unit): ListAdapter<BookDataResult, GenreActionsAdapter.ActionsViewHolder>(DiffCallback){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionsViewHolder {
@@ -22,6 +22,9 @@ class GenreActionsAdapter: ListAdapter<BookDataResult, GenreActionsAdapter.Actio
 
     inner class ActionsViewHolder(private val binding: ItemBooksBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(bookDataResult: BookDataResult){
+            binding.cardView.setOnClickListener{
+                showDetail(binding.txtId.text.toString())
+            }
             binding.item = bookDataResult
             binding.executePendingBindings()
         }

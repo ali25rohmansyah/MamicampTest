@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.raproject.mamicamptest.databinding.ItemGenreBinding
 import com.raproject.mamicamptest.network.GenreDataResult
 
-class AllGenreAdapter: ListAdapter<GenreDataResult, AllGenreAdapter.AllGenreViewHolder>(DiffCallback){
+class AllGenreAdapter : ListAdapter<GenreDataResult, AllGenreAdapter.AllGenreViewHolder>(DiffCallback){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllGenreViewHolder {

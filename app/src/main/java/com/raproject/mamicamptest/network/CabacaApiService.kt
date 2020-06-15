@@ -6,6 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Path
 
 private val baseUrl = "https://cabaca.id:8443/api/v2/"
 
@@ -21,7 +22,7 @@ private val retrofit = Retrofit.Builder()
 // Api interface / Endpoint
 interface CabacaService{
     @Headers("x-dreamfactory-api-key: 25e0bf00ab2fa7f03a9fa57035139e47ccb28c20658f6de907b8011347e369fb")
-    @GET("book/uptodate?limit=10")
+    @GET("book/uptodate?limit=42")
     suspend fun showUpdateBook():
             BooksData
 
@@ -34,6 +35,16 @@ interface CabacaService{
     @GET("cabaca/_table/genre")
     suspend fun showAllGenre():
             GenreData
+
+    @Headers("x-dreamfactory-api-key: 25e0bf00ab2fa7f03a9fa57035139e47ccb28c20658f6de907b8011347e369fb")
+    @GET("book/detail/{id}")
+    suspend fun showDetailBook(@Path("id") id: String):
+            DetailBookData
+
+    @Headers("x-dreamfactory-api-key: 25e0bf00ab2fa7f03a9fa57035139e47ccb28c20658f6de907b8011347e369fb")
+    @GET("writer/detail/{id}")
+    suspend fun showDetailUser(@Path("id") id: String):
+            DetailUserData
 
 }
 
