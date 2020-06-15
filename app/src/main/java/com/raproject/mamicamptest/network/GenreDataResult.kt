@@ -1,8 +1,8 @@
 package com.raproject.mamicamptest.network
 
-data class ActionDataResult(
+data class GenreDataResult(
     val id: String,
     val title: String,
-    val status: String,
-    val cover_url: String
+    val icon_url: String,
+    val count: String
 )

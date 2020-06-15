@@ -7,7 +7,7 @@
 
     <data>
         <variable name="item"
-            type="com.raproject.mamicamptest.network.ActionDataResult"/>
+            type="com.raproject.mamicamptest.network.BookDataResult"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

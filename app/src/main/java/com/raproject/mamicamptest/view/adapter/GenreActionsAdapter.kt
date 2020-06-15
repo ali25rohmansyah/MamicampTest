@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.raproject.mamicamptest.databinding.ItemGenreActionsBinding
-import com.raproject.mamicamptest.network.ActionDataResult
+import com.raproject.mamicamptest.databinding.ItemBooksBinding
+import com.raproject.mamicamptest.network.BookDataResult
 
-class GenreActionsAdapter: ListAdapter<ActionDataResult, GenreActionsAdapter.ActionsViewHolder>(DiffCallback){
+class GenreActionsAdapter: ListAdapter<BookDataResult, GenreActionsAdapter.ActionsViewHolder>(DiffCallback){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActionsViewHolder {
-        return ActionsViewHolder(ItemGenreActionsBinding.inflate(LayoutInflater.from(parent.context)))
+        return ActionsViewHolder(ItemBooksBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: ActionsViewHolder, position: Int) {
@@ -20,19 +20,19 @@ class GenreActionsAdapter: ListAdapter<ActionDataResult, GenreActionsAdapter.Act
         holder.bind(item)
     }
 
-    inner class ActionsViewHolder(private val binding: ItemGenreActionsBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(actionDataResult: ActionDataResult){
-            binding.item = actionDataResult
+    inner class ActionsViewHolder(private val binding: ItemBooksBinding): RecyclerView.ViewHolder(binding.root){
+        fun bind(bookDataResult: BookDataResult){
+            binding.item = bookDataResult
             binding.executePendingBindings()
         }
     }
 
-    companion object DiffCallback: DiffUtil.ItemCallback<ActionDataResult>(){
-        override fun areItemsTheSame(oldItem: ActionDataResult, newItem: ActionDataResult): Boolean {
+    companion object DiffCallback: DiffUtil.ItemCallback<BookDataResult>(){
+        override fun areItemsTheSame(oldItem: BookDataResult, newItem: BookDataResult): Boolean {
             return oldItem === newItem
         }
 
-        override fun areContentsTheSame(oldItem: ActionDataResult, newItem: ActionDataResult): Boolean {
+        override fun areContentsTheSame(oldItem: BookDataResult, newItem: BookDataResult): Boolean {
             return  oldItem.id  == newItem.id
         }
     }

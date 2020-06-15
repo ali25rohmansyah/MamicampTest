@@ -23,12 +23,18 @@ interface CabacaService{
     @Headers("x-dreamfactory-api-key: 25e0bf00ab2fa7f03a9fa57035139e47ccb28c20658f6de907b8011347e369fb")
     @GET("book/uptodate?limit=10")
     suspend fun showUpdateBook():
-            ActionData
+            BooksData
 
     @Headers("x-dreamfactory-api-key: 25e0bf00ab2fa7f03a9fa57035139e47ccb28c20658f6de907b8011347e369fb")
     @GET("book/category?id=1")
     suspend fun showActions():
-            ActionData
+            BooksData
+
+    @Headers("x-dreamfactory-api-key: 25e0bf00ab2fa7f03a9fa57035139e47ccb28c20658f6de907b8011347e369fb")
+    @GET("cabaca/_table/genre")
+    suspend fun showAllGenre():
+            GenreData
+
 }
 
 object cabacaApi{
